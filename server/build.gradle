@@ -1,0 +1,30 @@
+plugins{
+    id 'java'
+    id 'org.springframework.boot' version '2.0.5.RELEASE'
+}
+
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+tasks.withType(JavaCompile) {
+	options.encoding = 'UTF-8'
+}
+
+
+
+repositories {
+     maven { url 'http://maven.aliyun.com/nexus/content/groups/public' }
+     maven { url "http://maven.vaadin.com/vaadin-addons" }
+     maven { url "http://repo.maven.apache.org/maven2" }
+}
+dependencies {
+    compile group: 'com.vaadin', name: 'vaadin-spring-boot-starter', version:'10.0.12'
+    compile 'org.hibernate:hibernate-validator:5.4.1.Final'
+    compile 'org.vaadin.pekka:checkbox-group-java:1.0.0.beta1'
+    compile 'javax.validation:validation-api:2.0.1.Final'
+
+}
+
+bootJar {
+    mainClassName = 'site.icopy.bowl.server.Application'
+}
